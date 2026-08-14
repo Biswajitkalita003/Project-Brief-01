@@ -1,21 +1,15 @@
-import "./MainLayout.css";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+import PageTitle from "../components/common/PageTitle";
 
-function MainLayout({ title, children }) {
+function MainLayout({ children }) {
   return (
-    <div className="layout">
-      <header className="header">
-        <h2>University Management System</h2>
-      </header>
-
-      <main className="content">
-        <h3>Page Title: {title}</h3>
-        {children}
-      </main>
-
-      <footer className="footer">
-        © 2026 University Management System
-      </footer>
-    </div>
+    <>
+      <Header />
+      <PageTitle />
+      {children}
+      <Footer />
+    </>
   );
 }
 

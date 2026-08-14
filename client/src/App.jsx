@@ -1,6 +1,11 @@
+import MainLayout from "./layouts/MainLayout";
+import Dashboard from "./pages/Dashboard/Dashboard";
+
 function App() {
   return (
-    <h1>Campus Connect</h1>
+    <MainLayout>
+      <Dashboard />
+    </MainLayout>
   );
 }
 
