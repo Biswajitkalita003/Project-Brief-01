@@ -1,14 +1,11 @@
-function Dashboard() {
-    return (
-        <div>
-            <h1>Inventory Dashboard</h1>
-
-            <p>
-                Placeholder Description: Overview of stock levels,
-                products, purchases, and low-stock items.
-            </p>
-        </div>
-    );
+function Profile() {
+  return (
+    <section>
+      <p>Page Title: Profile</p>
+      <h1>User Profile</h1>
+      <p>Placeholder description for the profile page.</p>
+    </section>
+  );
 }
 
-export default Dashboard;
+export default Profile;

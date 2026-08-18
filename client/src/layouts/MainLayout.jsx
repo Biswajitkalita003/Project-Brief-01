@@ -1,13 +1,16 @@
-import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
-import PageTitle from "../components/common/PageTitle";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
-function MainLayout({ children }) {
+function MainLayout() {
   return (
     <>
-      <Header />
-      <PageTitle />
-      {children}
+      <Navbar />
+
+      <main>
+        <h1>Campus Connect</h1>
+        <p>Main content placeholder</p>
+      </main>
+
       <Footer />
     </>
   );

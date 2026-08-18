@@ -1,5 +1,11 @@
 function Login() {
-    return <h2>Login Page</h2>;
+  return (
+    <section>
+      <p>Page Title: Login</p>
+      <h1>Login</h1>
+      <p>Placeholder description for the login page.</p>
+    </section>
+  );
 }
 
 export default Login;

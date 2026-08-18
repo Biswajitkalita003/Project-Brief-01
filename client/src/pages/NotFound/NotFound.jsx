@@ -1,5 +1,11 @@
 function NotFound() {
-    return <h2>404 Page Not Found</h2>;
+  return (
+    <section>
+      <p>Page Title: Not Found</p>
+      <h1>Page Not Found</h1>
+      <p>Placeholder description for the not found page.</p>
+    </section>
+  );
 }
 
 export default NotFound;
