@@ -19,3 +19,38 @@ main {
 a {
   color: var(--primary-color);
 }
+header {
+  padding: 15px 30px;
+  background-color: var(--primary-color);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+footer {
+  padding: 20px 30px;
+  text-align: center;
+}

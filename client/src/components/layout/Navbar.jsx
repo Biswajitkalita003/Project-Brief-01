@@ -1,17 +1,33 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
-  return (
-    <nav>
-      <h2>Campus Connect</h2>
+  const getLinkClass = ({ isActive }) =>
+    isActive ? "nav-link active" : "nav-link";
 
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/login">Login</Link>
-      </div>
-    </nav>
+  return (
+    <header>
+      <nav>
+        <div className="nav-brand">Campus Connect</div>
+
+        <div className="nav-links">
+          <NavLink to="/" className={getLinkClass}>
+            Home
+          </NavLink>
+
+          <NavLink to="/dashboard" className={getLinkClass}>
+            Dashboard
+          </NavLink>
+
+          <NavLink to="/profile" className={getLinkClass}>
+            Profile
+          </NavLink>
+
+          <NavLink to="/login" className={getLinkClass}>
+            Login
+          </NavLink>
+        </div>
+      </nav>
+    </header>
   );
 }
 

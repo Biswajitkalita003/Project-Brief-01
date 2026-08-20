@@ -1,9 +1,22 @@
+import PageTitle from "../../components/ui/PageTitle";
+import Button from "../../components/ui/Button";
+import Card from "../../components/ui/Card";
+
 function Dashboard() {
+  const handleClick = () => {
+    alert("Dashboard button clicked!");
+  };
+
   return (
     <section>
-      <p>Page Title: Dashboard</p>
-      <h1>Campus Connect Dashboard</h1>
-      <p>Overview of the campus activities and information.</p>
+      <PageTitle title="Campus Connect Dashboard" />
+
+      <Card
+        title="Dashboard Overview"
+        description="Overview of the campus activities and information."
+      >
+        <Button text="View Details" onClick={handleClick} />
+      </Card>
     </section>
   );
 }
