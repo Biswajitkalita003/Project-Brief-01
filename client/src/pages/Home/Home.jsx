@@ -3,7 +3,10 @@ function Home() {
     <section>
       <p>Page Title: Home</p>
       <h1>Campus Connect Home</h1>
-      <p>Placeholder description for the home page.</p>
+      <p>
+        Welcome to Campus Connect, a platform for accessing campus information
+        and activities.
+      </p>
     </section>
   );
 }

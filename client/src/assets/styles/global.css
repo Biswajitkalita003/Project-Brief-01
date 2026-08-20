@@ -1,12 +1,6 @@
-@import "./variables.css";
-
-* {
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
   font-family: Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -20,4 +14,8 @@ h3 {
 
 main {
   padding: 30px;
+}
+
+a {
+  color: var(--primary-color);
 }
