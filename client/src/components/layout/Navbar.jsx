@@ -12,16 +12,17 @@ function Navbar() {
   };
 
   return (
-    <header>
-      <nav>
+    <header className="site-header">
+      <nav className="navbar">
         <div className="nav-brand">Campus Connect</div>
 
         <button
           className="menu-toggle"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation menu"
+          aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
         >
-          {menuOpen ? "✕" : "☰"}
+          {menuOpen ? "×" : "☰"}
         </button>
 
         <div className={`nav-links ${menuOpen ? "menu-open" : ""}`}>

@@ -1,7 +1,10 @@
-/* Tablet */
+/* =========================
+   Tablet
+   ========================= */
+
 @media (max-width: 768px) {
-  header {
-    padding: 15px 20px;
+  .navbar {
+    padding: 0 20px;
   }
 
   .app-layout main {
@@ -11,16 +14,22 @@
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .nav-links {
+    gap: 16px;
+  }
 }
 
-/* Mobile */
-@media (max-width: 480px) {
-  header {
-    padding: 12px 15px;
-  }
 
-  nav {
-    position: relative;
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 480px) {
+  .navbar {
+    min-height: 60px;
+    padding: 0 15px;
+
     flex-wrap: wrap;
   }
 
@@ -28,26 +37,91 @@
     font-size: 18px;
   }
 
+  /* Show hamburger */
+
   .menu-toggle {
-    display: block;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
   }
+
+  /* Closed menu */
 
   .nav-links {
     display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    margin-top: 12px;
   }
+
+  /* Open menu */
 
   .nav-links.menu-open {
     display: flex;
+
+    width: 100%;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    margin: 10px 0 12px;
+
+    padding: 6px 0;
+
+    background-color: white;
+
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   }
 
-  .nav-link {
-    padding: 12px 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  /* Mobile links */
+
+  .nav-links .nav-link {
+    color: #222;
+
+    padding: 13px 15px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-size: 15px;
+  }
+
+  .nav-links .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links .nav-link:hover {
+    background-color: #f5f5f5;
+  }
+
+  /* Active mobile link */
+
+  .nav-links .nav-link.active {
+    color: #4c4eea;
+    font-weight: 700;
+  }
+
+  .nav-links .nav-link.active::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 4px;
+    height: 18px;
+
+    margin-right: 10px;
+
+    vertical-align: middle;
+
+    background-color: #4c4eea;
+
+    border-radius: 2px;
+  }
+
+  .nav-links .nav-link.active::after {
+    display: none;
   }
 
   .app-layout main {
@@ -70,8 +144,9 @@
     width: 100%;
   }
 
+  /* Keep menu button compact */
   .menu-toggle {
-    width: auto;
+    width: 40px;
   }
 
   footer {
