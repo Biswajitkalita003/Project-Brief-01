@@ -1,28 +1,51 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const getLinkClass = ({ isActive }) =>
     isActive ? "nav-link active" : "nav-link";
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <header>
       <nav>
         <div className="nav-brand">Campus Connect</div>
 
-        <div className="nav-links">
-          <NavLink to="/" className={getLinkClass}>
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
+
+        <div className={`nav-links ${menuOpen ? "menu-open" : ""}`}>
+          <NavLink to="/" className={getLinkClass} onClick={closeMenu}>
             Home
           </NavLink>
 
-          <NavLink to="/dashboard" className={getLinkClass}>
+          <NavLink
+            to="/dashboard"
+            className={getLinkClass}
+            onClick={closeMenu}
+          >
             Dashboard
           </NavLink>
 
-          <NavLink to="/profile" className={getLinkClass}>
+          <NavLink
+            to="/profile"
+            className={getLinkClass}
+            onClick={closeMenu}
+          >
             Profile
           </NavLink>
 
-          <NavLink to="/login" className={getLinkClass}>
+          <NavLink to="/login" className={getLinkClass} onClick={closeMenu}>
             Login
           </NavLink>
         </div>
