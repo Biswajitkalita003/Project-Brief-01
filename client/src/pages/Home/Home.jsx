@@ -7,18 +7,20 @@ function Home() {
     alert("Welcome to Campus Connect!");
   };
 
-  return (
-    <section>
-      <PageTitle title="Campus Connect Home" />
+ return (
+  <section>
+    <PageTitle title="Campus Connect Home" />
 
+    <div className="card-grid">
       <Card
         title="Welcome"
         description="Welcome to Campus Connect, a platform for accessing campus information and activities."
       >
         <Button text="Get Started" onClick={handleClick} />
       </Card>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
 
 export default Home;

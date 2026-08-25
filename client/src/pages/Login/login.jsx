@@ -8,17 +8,19 @@ function Login() {
   };
 
   return (
-    <section>
-      <PageTitle title="Login" />
+  <section>
+    <PageTitle title="Login" />
 
+    <div className="card-grid">
       <Card
         title="Welcome Back"
         description="Please use the login option to access your Campus Connect account."
       >
         <Button text="Login" onClick={handleClick} />
       </Card>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
 
 export default Login;

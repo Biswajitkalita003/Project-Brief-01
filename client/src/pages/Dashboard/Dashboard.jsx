@@ -7,18 +7,20 @@ function Dashboard() {
     alert("Dashboard button clicked!");
   };
 
-  return (
-    <section>
-      <PageTitle title="Campus Connect Dashboard" />
+ return (
+  <section>
+    <PageTitle title="Campus Connect Dashboard" />
 
+    <div className="card-grid">
       <Card
         title="Dashboard Overview"
         description="Overview of the campus activities and information."
       >
         <Button text="View Details" onClick={handleClick} />
       </Card>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
 
 export default Dashboard;

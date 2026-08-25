@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function MainLayout() {
   return (
-    <>
+    <div className="app-layout">
       <Navbar />
 
       <main>
@@ -12,7 +12,7 @@ function MainLayout() {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
 
