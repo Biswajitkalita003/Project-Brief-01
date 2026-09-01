@@ -1,7 +1,10 @@
-function Card() {
+function Card({ title, description, children }) {
   return (
-    <div>
-      Card Placeholder
+    <div className="card">
+      <h3>{title}</h3>
+      <p>{description}</p>
+
+      {children}
     </div>
   );
 }
