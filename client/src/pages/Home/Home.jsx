@@ -1,15 +1,23 @@
-import Card from "../../components/common/Card";
+import PageTitle from "../../components/ui/PageTitle";
+import Welcome from "../../components/ui/Welcome";
+import Card from "../../components/ui/Card";
+
 
 function Home() {
   return (
     <section>
-      <p>Page Title: Home</p>
-      <h1>Campus Connect Home</h1>
-
+      <PageTitle
+        title="Campus Connect Home"
+        description="Welcome to Campus Connect, a platform for accessing campus information and activities."
+      />
       <div className="card-grid">
         <Card
           title="Welcome"
           description="Welcome to Campus Connect, a platform for accessing campus information and activities."
+        />
+        <Welcome
+          name="Student"
+          project="Campus Connect"
         />
 
         <Card

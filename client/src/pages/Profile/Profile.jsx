@@ -8,19 +8,22 @@ function Profile() {
   };
 
   return (
-  <section>
-    <PageTitle title="User Profile" />
-
-    <div className="card-grid">
-      <Card
-        title="Profile Information"
+    <section>
+      <PageTitle
+        title="User Profile"
         description="View and manage your Campus Connect profile information."
-      >
-        <Button text="View Profile" onClick={handleClick} />
-      </Card>
-    </div>
-  </section>
-);
+      />
+
+      <div className="card-grid">
+        <Card
+          title="Profile Information"
+          description="View and manage your Campus Connect profile information."
+        >
+          <Button text="View Profile" onClick={handleClick} />
+        </Card>
+      </div>
+    </section>
+  );
 }
 
 export default Profile;
