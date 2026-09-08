@@ -1,24 +1,27 @@
+import { Link } from "react-router-dom";
+
 import PageTitle from "../../components/ui/PageTitle";
-import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
+import Button from "../../components/ui/Button";
 
 function Login() {
-  const handleClick = () => {
-    alert("Login button clicked!");
-  };
-
   return (
     <section>
-      <PageTitle
-        title="Login"
-        description="Login to access your Campus Connect account."
-      />
+      <PageTitle title="Login" />
+
       <div className="card-grid">
         <Card
           title="Welcome Back"
-          description="Please use the login option to access your Campus Connect account."
+          description="Login to continue to Campus Connect."
         >
-          <Button text="Login" onClick={handleClick} />
+          <Button text="Login" />
+
+          <p className="register-text">
+            Don't have an account?{" "}
+            <Link to="/student-registration">
+              Register as a Student
+            </Link>
+          </p>
         </Card>
       </div>
     </section>

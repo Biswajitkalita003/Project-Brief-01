@@ -29,13 +29,6 @@ function Navbar() {
           <NavLink to="/" className={getLinkClass} onClick={closeMenu}>
             Home
           </NavLink>
-          <NavLink
-            to="/student-registration"
-            className={getLinkClass}
-            onClick={closeMenu}
-          >
-            Student Registration
-          </NavLink>
 
           <NavLink
             to="/dashboard"
