@@ -1,3 +1,4 @@
+
 import { Routes, Route } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
@@ -8,6 +9,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Profile/Profile";
 import NotFound from "../pages/NotFound/NotFound";
 import StudentRegistration from "../pages/StudentRegistration/StudentRegistration";
+import Students from "../pages/Students/Students";
 
 function AppRoutes() {
   return (
@@ -21,6 +23,7 @@ function AppRoutes() {
           path="/student-registration"
           element={<StudentRegistration />}
         />
+        <Route path="/students" element={<Students />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

@@ -1,4 +1,6 @@
+
 import { useState } from "react";
+import { createStudent } from "../../services/studentService";
 
 function StudentRegistration() {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ function StudentRegistration() {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -26,54 +30,54 @@ function StudentRegistration() {
     });
 
     setSubmitted(false);
+    setApiError("");
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Hide previous success message when submitting again
     setSubmitted(false);
+    setApiError("");
 
     const newErrors = {};
 
-    // Full Name validation
     if (!formData.name.trim()) {
       newErrors.name = "Full name is required";
     }
 
-    // Email validation
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Enter a valid email";
     }
 
-    // Phone validation
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
     } else if (!/^\d{10}$/.test(formData.phone)) {
       newErrors.phone = "Enter a valid 10-digit phone number";
     }
 
-    // Student ID validation
     if (!formData.studentId.trim()) {
       newErrors.studentId = "Student ID is required";
     }
 
-    // Course validation
     if (!formData.course.trim()) {
       newErrors.course = "Course is required";
     }
 
     setErrors(newErrors);
 
-    // Submit only when there are no validation errors
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Student Registration Data:", formData);
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      await createStudent(formData);
 
       setSubmitted(true);
 
-      // Clear form after successful registration
       setFormData({
         name: "",
         email: "",
@@ -81,6 +85,13 @@ function StudentRegistration() {
         studentId: "",
         course: "",
       });
+    } catch (error) {
+      setApiError(
+        error.response?.data?.message ||
+        "Unable to register student. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -95,6 +106,7 @@ function StudentRegistration() {
 
     setErrors({});
     setSubmitted(false);
+    setApiError("");
   };
 
   return (
@@ -108,7 +120,6 @@ function StudentRegistration() {
 
         <form onSubmit={handleSubmit} className="registration-form">
 
-          {/* Full Name */}
           <div className="form-group">
             <label htmlFor="name">
               Full Name <span>*</span>
@@ -116,7 +127,6 @@ function StudentRegistration() {
 
             <div className="input-wrapper">
               <span className="input-icon">👤</span>
-
               <input
                 id="name"
                 type="text"
@@ -127,12 +137,9 @@ function StudentRegistration() {
               />
             </div>
 
-            {errors.name && (
-              <p className="form-error">{errors.name}</p>
-            )}
+            {errors.name && <p className="form-error">{errors.name}</p>}
           </div>
 
-          {/* Email */}
           <div className="form-group">
             <label htmlFor="email">
               Email <span>*</span>
@@ -140,7 +147,6 @@ function StudentRegistration() {
 
             <div className="input-wrapper">
               <span className="input-icon">✉</span>
-
               <input
                 id="email"
                 type="email"
@@ -151,12 +157,9 @@ function StudentRegistration() {
               />
             </div>
 
-            {errors.email && (
-              <p className="form-error">{errors.email}</p>
-            )}
+            {errors.email && <p className="form-error">{errors.email}</p>}
           </div>
 
-          {/* Phone Number */}
           <div className="form-group">
             <label htmlFor="phone">
               Phone Number <span>*</span>
@@ -164,7 +167,6 @@ function StudentRegistration() {
 
             <div className="input-wrapper">
               <span className="input-icon">☎</span>
-
               <input
                 id="phone"
                 type="text"
@@ -175,12 +177,9 @@ function StudentRegistration() {
               />
             </div>
 
-            {errors.phone && (
-              <p className="form-error">{errors.phone}</p>
-            )}
+            {errors.phone && <p className="form-error">{errors.phone}</p>}
           </div>
 
-          {/* Student ID */}
           <div className="form-group">
             <label htmlFor="studentId">
               Student ID <span>*</span>
@@ -188,7 +187,6 @@ function StudentRegistration() {
 
             <div className="input-wrapper">
               <span className="input-icon">▣</span>
-
               <input
                 id="studentId"
                 type="text"
@@ -204,7 +202,6 @@ function StudentRegistration() {
             )}
           </div>
 
-          {/* Course */}
           <div className="form-group">
             <label htmlFor="course">
               Course <span>*</span>
@@ -212,7 +209,6 @@ function StudentRegistration() {
 
             <div className="input-wrapper">
               <span className="input-icon">🎓</span>
-
               <select
                 id="course"
                 name="course"
@@ -227,31 +223,36 @@ function StudentRegistration() {
               </select>
             </div>
 
-            {errors.course && (
-              <p className="form-error">{errors.course}</p>
-            )}
+            {errors.course && <p className="form-error">{errors.course}</p>}
           </div>
 
-          {/* Buttons */}
           <div className="form-buttons">
-            <button type="submit" className="register-button">
-              👤+ &nbsp; Register Student
+            <button
+              type="submit"
+              className="register-button"
+              disabled={loading}
+            >
+              {loading ? "Registering..." : "👤+ Register Student"}
             </button>
 
             <button
               type="button"
               className="reset-button"
               onClick={handleReset}
+              disabled={loading}
             >
-              ↻ &nbsp; Reset
+              ↻ Reset
             </button>
           </div>
 
-          {/* Success Message */}
+          {apiError && (
+            <div className="form-error">{apiError}</div>
+          )}
+
           {submitted && (
             <div className="success-message">
               <span>✓</span>
-              Student registration submitted successfully!
+              Student registered successfully!
             </div>
           )}
 
